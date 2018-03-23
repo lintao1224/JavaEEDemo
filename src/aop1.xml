@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xsi:schemaLocation="    
+          http://www.springframework.org/schema/beans    
+          http://www.springframework.org/schema/beans/spring-beans-4.0.xsd    
+          http://www.springframework.org/schema/context    
+          http://www.springframework.org/schema/context/spring-context-4.0.xsd
+          http://www.springframework.org/schema/aop    
+          http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
+	<bean id="myUserService" class="com.demo.aop.UserServiceImpl"/>
+	<bean id="myAspect" class="com.demo.aop.MyAspect"/>
+	     
+   <aop:config>
+    <aop:pointcut expression="execution(* *..UserServiceImpl.doSomeThing())" id="mydoSomePointCut"/>
+    <aop:pointcut expression="execution(* *..UserServiceImpl.doOtherThing())" id="mydoOtherPointCut"/>
+   	<aop:pointcut expression="execution(* *..UserServiceImpl.doThirdThing())" id="mydoThirdPointCut"/>
+   	<aop:pointcut expression="execution(* *..UserServiceImpl.doFouthThing())" id="mydoFouthPointCut"/>
+    <aop:pointcut expression="execution(* *..UserServiceImpl.doFifthThing())" id="mydoFifthPointCut"/>
+   	<aop:aspect ref="myAspect">
+   		<aop:before method="before" pointcut-ref="mydoSomePointCut"/>
+   		<aop:after method="after" pointcut-ref="mydoOtherPointCut"/>
+   		<aop:after-returning method="afterReturning" pointcut-ref="mydoThirdPointCut" returning="result"/>
+   		<aop:after-throwing method="afterThrowing" pointcut-ref="mydoFouthPointCut" throwing="e"/>
+   		<aop:around method="around" pointcut-ref="mydoFifthPointCut"/>
+   	</aop:aspect>
+   </aop:config>		
+ </beans>

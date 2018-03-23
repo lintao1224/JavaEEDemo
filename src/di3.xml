@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:Context="http://www.springframework.org/schema/context"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+    http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+    
+     <bean id="mySchool" class="com.demo.bean.School">
+    	<property name="name" value="qinghua"></property>
+    	
+    </bean>
+    <bean id="myStudent" class="com.demo.bean.Student" autowire="byName">
+    	<property name="name" value="张三"></property>
+    	<property name="age" value="18"></property>
+    </bean>
+    
+    <bean id="myStudent2" class="com.demo.bean.Student" autowire="byType">
+    	<property name="name" value="李四"></property>
+    	<property name="age" value="20"></property>
+    </bean>
+    
+      
+		
+	
+ </beans>
