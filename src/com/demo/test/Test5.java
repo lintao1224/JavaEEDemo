@@ -12,7 +12,11 @@ import com.demo.bean.TUser;
 import com.demo.jdbc.UserMapper;
 import com.demo.jdbc.UserService;
 import com.demo.jdbc.transaction.AccountService;
-
+/**
+ * 事务处理
+ * @author Administrator
+ *
+ */
 public class Test5 {
 	@Test
 	public void test01() {
